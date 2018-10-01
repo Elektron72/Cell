@@ -19,6 +19,7 @@ local j
 local tempchar
 local loc
 local fileOptions
+clipboard = "//init.lua"
 
 w = math.floor(w / 2) * 2
 h = math.floor(h / 2) * 2
@@ -189,6 +190,7 @@ function functionsList()
   gpu.setForeground(0x00DD44)
   gpu.set(1, 3, "New File...")
   gpu.set(1, 4, "New Directory...")
+  gpu.set(1, 5, "Paste...")
 end
 
 function optionsList()
@@ -307,6 +309,10 @@ while running do
       term.setCursor(1, h)
       term.write("Directory Name? ")
       filesystem.makeDirectory(currentPath .. string.gsub(term.read(), "\n", ""))
+      renderScreen()
+    end
+    if y == 5 then
+      shell.execute("cp " .. clipboard .. " " .. currentPath .. " -r")
       renderScreen()
     end
   end
