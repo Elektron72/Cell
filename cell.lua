@@ -6,7 +6,7 @@ local shell = require("shell")
 local process = require("process")
 local term = require("term")
 local gpu = component.gpu
-local w, h = gpu.maxResolution()
+w, h = gpu.maxResolution()
 local running = true
 currentPath = "//"
 local dirContents
@@ -137,7 +137,7 @@ function topBar()
   gpu.setBackground(0xDDDDDD)
   gpu.setForeground(0x00DD44)
   gpu.fill(1, 1, w, 1, " ")
-  gpu.set(2, 1, "Cell v0.11")
+  gpu.set(2, 1, "Cell v0.12")
   gpu.set(w - 3, 1, "Exit")
 end
 
